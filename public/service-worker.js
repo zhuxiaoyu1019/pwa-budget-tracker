@@ -22,6 +22,8 @@ self.addEventListener("install", function (evt) {
     caches.open(CACHE_NAME).then(cache => {
       console.log("Your files were pre-cached successfully!");
       return cache.addAll(staticFilesToPreCache);
+    }).catch(err => {
+      console.log(err);
     })
   );
 
@@ -40,6 +42,8 @@ self.addEventListener("activate", function (evt) {
           }
         })
       );
+    }).catch(err => {
+      console.log(err)
     })
   );
 
